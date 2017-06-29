@@ -2813,6 +2813,20 @@ if (this instanceof SmbNamedPipe) {
     }
 
 /**
+ * This URLConnection method just returns the result of <tt>length()</tt>.
+ *
+ * @return the length of this file or 0 if it refers to a directory
+ */
+    @Override
+    public long getContentLengthLong() {
+        try {
+            return length();
+        } catch( SmbException se ) {
+        }
+        return 0;
+    }
+
+/**
  * This URLConnection method just returns the result of <tt>lastModified</tt>.
  *
  * @return the last modified data as milliseconds since Jan 1, 1970
